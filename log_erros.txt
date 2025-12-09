@@ -1,0 +1,354 @@
+Erro na tabela assintecal_producao: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Erro na tabela assintecal_producao: (psycopg2.errors.UndefinedFunction) function split(text, unknown, integer) does not exist
+LINE 10: WHERE SPLIT(date, '/', 2)::INT IN (2021, 2022, 2023, 2024, 2...
+               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    producao
+WHERE SPLIT(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_calcados: (psycopg2.errors.UndefinedFunction) operator does not exist: text == unknown
+LINE 11:     fluxo == 'EXP' AND segmento == 'CALCADO' AND ano IN (202...
+                   ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo
+FROM
+    comex
+WHERE
+    fluxo == 'EXP' AND segmento == 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_calcados: (psycopg2.errors.UndefinedFunction) operator does not exist: text == unknown
+LINE 11:     fluxo == 'IMP' AND segmento == 'CALCADO' AND ano IN (202...
+                   ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo
+FROM
+    comex
+WHERE
+    fluxo == 'IMP' AND segmento == 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_couro: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_exp_calcados'", 'message': "Could not find the table 'public.assintecal_exp_couro' in the schema cache"}
+Erro na tabela assintecal_imp_couro: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_imp_calcados'", 'message': "Could not find the table 'public.assintecal_imp_couro' in the schema cache"}
+Erro na tabela assintecal_emprego_couro: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_emprego_calcados'", 'message': "Could not find the table 'public.assintecal_emprego_couro' in the schema cache"}
+Erro na tabela assintecal_exp_vertical_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.SyntaxError) syntax error at or near ")"
+LINE 19: )
+         ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+)
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_tx_desemprego: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_taxa_desemprego'", 'message': "Could not find the table 'public.assintecal_tx_desemprego' in the schema cache"}
+Erro na tabela assintecal_ibc: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_ibc_br'", 'message': "Could not find the table 'public.assintecal_ibc' in the schema cache"}
+Erro na tabela assintecal_tx_cambio: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_taxa_cambio'", 'message': "Could not find the table 'public.assintecal_tx_cambio' in the schema cache"}
