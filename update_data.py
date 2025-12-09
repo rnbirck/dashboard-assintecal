@@ -526,6 +526,28 @@ FROM expectativas
 WHERE ano IN :lista_anos
 """
 
+QUERY_PREVISAO_EXP = """
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_exportacao
+WHERE ano IN :lista_anos
+"""
+
+QUERY_PREVISAO_PRODUCAO = """
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_producao
+WHERE ano IN :lista_anos
+"""
+
 
 def main():
     """
@@ -567,6 +589,8 @@ def main():
         (QUERY_IBC_BR, "assintecal_ibc_br", params),
         (QUERY_TAXA_CAMBIO, "assintecal_taxa_cambio", params),
         (QUERY_EXPECTATIVAS, "assintecal_expectativas", params),
+        (QUERY_PREVISAO_EXP, "assintecal_previsao_exportacao", params),
+        (QUERY_PREVISAO_PRODUCAO, "assintecal_previsao_producao", params),
     ]
 
     print("Iniciando script de carga de dados FILTRADOS para o Supabase.")
