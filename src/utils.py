@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import streamlit as st
 import pandas as pd
 from plotly.subplots import make_subplots
+import io
 
 # =============================================================================
 # CONSTANTES E DICIONÁRIOS
@@ -69,6 +70,26 @@ def carregar_css(caminho_arquivo):
     """
     with open(caminho_arquivo, encoding="utf-8") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+def to_excel(df: pd.DataFrame) -> bytes:
+    """
+    Converte um DataFrame do Pandas para um arquivo Excel em memória (bytes).
+
+    Args:
+        df (pd.DataFrame): O DataFrame a ser convertido.
+
+    Returns:
+        bytes: Os dados do arquivo Excel em bytes.
+    """
+    output = io.BytesIO()
+
+    with pd.ExcelWriter(output, engine="openpyxl") as writer:
+        df.to_excel(writer, index=False, sheet_name="Dados")
+
+    # Pega o valor dos bytes do buffer de memória
+    processed_data = output.getvalue()
+    return processed_data
 
 
 def titulo_centralizado(texto: str, level: int, cor: str = None):

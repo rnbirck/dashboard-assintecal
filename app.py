@@ -18,6 +18,7 @@ from views.vertical import show_page_vertical  # noqa: E402
 from views.componente import show_page_componente  # noqa: E402
 from views.macroeconomia import show_page_macroeconomia  # noqa: E402
 from views.home import show_page_home  # noqa: E402
+from views.dados import show_page_dados  # noqa: E402
 
 
 from src.utils import carregar_css  # noqa: E402
@@ -120,8 +121,17 @@ def main():
                 "Vertical",
                 "Componente",
                 "Macroeconomia",
+                "Dados",
             ],
-            icons=["house", "box-seam", "layers", "bar-chart", "puzzle", "graph-up"],
+            icons=[
+                "house",
+                "box-seam",
+                "layers",
+                "bar-chart",
+                "puzzle",
+                "graph-up",
+                "download",
+            ],
             menu_icon="cast",
             default_index=0,
             styles={
@@ -197,6 +207,38 @@ def main():
             )
         if pagina_selecionada == "Macroeconomia":
             show_page_macroeconomia(
+                df_ibc_br=df_ibc_br,
+                df_expectativas=df_expectativas,
+                df_ipca_geral=df_ipca_geral,
+                df_taxa_cambio=df_taxa_cambio,
+                df_ind_transformacao=df_ind_transformacao,
+                df_taxa_desemprego=df_taxa_desemprego,
+            )
+        if pagina_selecionada == "Dados":
+            show_page_dados(
+                df_producao=df_producao,
+                df_vendas=df_vendas,
+                df_exp_calcados=df_exp_calcados,
+                df_imp_calcados=df_imp_calcados,
+                df_emprego_calcados=df_emprego_calcados,
+                df_ipca_calcados=df_ipca_calcados,
+                df_previsao_exportacao=df_previsao_exportacao,
+                df_previsao_producao=df_previsao_producao,
+                df_exp_couro=df_exp_couro,
+                df_imp_couro=df_imp_couro,
+                df_emprego_couro=df_emprego_couro,
+                df_exp_vertical=df_exp_vertical,
+                df_exp_vertical_pais=df_exp_vertical_pais,
+                df_exp_vertical_sh6=df_exp_vertical_sh6,
+                df_imp_vertical=df_imp_vertical,
+                df_imp_vertical_pais=df_imp_vertical_pais,
+                df_imp_vertical_sh6=df_imp_vertical_sh6,
+                df_exp_componente=df_exp_componente,
+                df_exp_componente_pais=df_exp_componente_pais,
+                df_exp_componente_sh6=df_exp_componente_sh6,
+                df_imp_componente=df_imp_componente,
+                df_imp_componente_pais=df_imp_componente_pais,
+                df_imp_componente_sh6=df_imp_componente_sh6,
                 df_ibc_br=df_ibc_br,
                 df_expectativas=df_expectativas,
                 df_ipca_geral=df_ipca_geral,
