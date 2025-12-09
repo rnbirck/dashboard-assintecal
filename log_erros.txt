@@ -352,3 +352,2247 @@ GROUP BY
 Erro na tabela assintecal_tx_desemprego: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_taxa_desemprego'", 'message': "Could not find the table 'public.assintecal_tx_desemprego' in the schema cache"}
 Erro na tabela assintecal_ibc: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_ibc_br'", 'message': "Could not find the table 'public.assintecal_ibc' in the schema cache"}
 Erro na tabela assintecal_tx_cambio: {'code': 'PGRST205', 'details': None, 'hint': "Perhaps you meant the table 'public.assintecal_taxa_cambio'", 'message': "Could not find the table 'public.assintecal_tx_cambio' in the schema cache"}
+Erro na tabela assintecal_producao: (psycopg2.errors.UndefinedTable) relation "producao" does not exist
+LINE 9:     producao
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    producao
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_vendas: (psycopg2.errors.UndefinedTable) relation "vendas_varejo_calcados" does not exist
+LINE 9:     vendas_varejo_calcados
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    vendas_varejo_calcados
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_calcados: (psycopg2.errors.UndefinedTable) relation "emprego_calcados" does not exist
+LINE 6: FROM emprego_calcados
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_calcados: (psycopg2.errors.UndefinedTable) relation "ipca_calcados" does not exist
+LINE 7: FROM ipca_calcados
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes,
+    ipca_12_meses
+FROM ipca_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_couro: (psycopg2.errors.UndefinedTable) relation "emprego_couro" does not exist
+LINE 6: FROM emprego_couro
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_couro
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_geral: (psycopg2.errors.UndefinedTable) relation "ipca_geral" does not exist
+LINE 7: FROM ipca_geral
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes_geral,
+    ipca_12_meses_geral
+FROM ipca_geral
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ind_transformacao: (psycopg2.errors.UndefinedTable) relation "ind_transformacao" does not exist
+LINE 8: FROM ind_transformacao
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    descricao,
+    taxa_mensal,
+    taxa_acumulado
+FROM ind_transformacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_desemprego: (psycopg2.errors.UndefinedTable) relation "tx_desemprego" does not exist
+LINE 12: FROM tx_desemprego
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    trimestre_movel,
+    fora_forca_trabalho,
+    forca_trabalho,
+    forca_trabalho_desocupada,
+    forca_trabalho_ocupada,
+    total,
+    (forca_trabalho_desocupada/forca_trabalho) * 100 AS taxa_desemprego
+FROM tx_desemprego
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ibc_br: (psycopg2.errors.UndefinedTable) relation "ibc" does not exist
+LINE 8: FROM ibc
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    ibc_mensal,
+    ibc_mes_anterior,
+    ibc_acumulado
+FROM ibc
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_cambio: (psycopg2.errors.UndefinedTable) relation "tx_cambio" does not exist
+LINE 10: FROM tx_cambio
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    taxa_cambio,
+    taxa_cambio_mensal,
+    taxa_cambio_acumulado,
+    taxa_cambio_mes_anterior,
+    media_movel_3
+FROM tx_cambio
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_expectativas: (psycopg2.errors.UndefinedTable) relation "expectativas" does not exist
+LINE 9: FROM expectativas
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    expectativa_pib_25,
+    expectativa_pib_26,
+    expectativa_ipca_25,
+    expectativa_ipca_26
+FROM expectativas
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_exportacao: (psycopg2.errors.UndefinedTable) relation "previsao_exportacao" does not exist
+LINE 8: FROM previsao_exportacao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_exportacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_producao: (psycopg2.errors.UndefinedTable) relation "previsao_producao" does not exist
+LINE 8: FROM previsao_producao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_producao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_producao: (psycopg2.errors.UndefinedTable) relation "producao" does not exist
+LINE 9:     producao
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    producao
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_vendas: (psycopg2.errors.UndefinedTable) relation "vendas_varejo_calcados" does not exist
+LINE 9:     vendas_varejo_calcados
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    vendas_varejo_calcados
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_calcados: (psycopg2.errors.UndefinedTable) relation "emprego_calcados" does not exist
+LINE 6: FROM emprego_calcados
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_calcados: (psycopg2.errors.UndefinedTable) relation "ipca_calcados" does not exist
+LINE 7: FROM ipca_calcados
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes,
+    ipca_12_meses
+FROM ipca_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_couro: (psycopg2.errors.UndefinedTable) relation "emprego_couro" does not exist
+LINE 6: FROM emprego_couro
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_couro
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_geral: (psycopg2.errors.UndefinedTable) relation "ipca_geral" does not exist
+LINE 7: FROM ipca_geral
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes_geral,
+    ipca_12_meses_geral
+FROM ipca_geral
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ind_transformacao: (psycopg2.errors.UndefinedTable) relation "ind_transformacao" does not exist
+LINE 8: FROM ind_transformacao
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    descricao,
+    taxa_mensal,
+    taxa_acumulado
+FROM ind_transformacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_desemprego: (psycopg2.errors.UndefinedTable) relation "tx_desemprego" does not exist
+LINE 12: FROM tx_desemprego
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    trimestre_movel,
+    fora_forca_trabalho,
+    forca_trabalho,
+    forca_trabalho_desocupada,
+    forca_trabalho_ocupada,
+    total,
+    (forca_trabalho_desocupada/forca_trabalho) * 100 AS taxa_desemprego
+FROM tx_desemprego
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ibc_br: (psycopg2.errors.UndefinedTable) relation "ibc" does not exist
+LINE 8: FROM ibc
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    ibc_mensal,
+    ibc_mes_anterior,
+    ibc_acumulado
+FROM ibc
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_cambio: (psycopg2.errors.UndefinedTable) relation "tx_cambio" does not exist
+LINE 10: FROM tx_cambio
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    taxa_cambio,
+    taxa_cambio_mensal,
+    taxa_cambio_acumulado,
+    taxa_cambio_mes_anterior,
+    media_movel_3
+FROM tx_cambio
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_expectativas: (psycopg2.errors.UndefinedTable) relation "expectativas" does not exist
+LINE 9: FROM expectativas
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    expectativa_pib_25,
+    expectativa_pib_26,
+    expectativa_ipca_25,
+    expectativa_ipca_26
+FROM expectativas
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_exportacao: (psycopg2.errors.UndefinedTable) relation "previsao_exportacao" does not exist
+LINE 8: FROM previsao_exportacao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_exportacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_producao: (psycopg2.errors.UndefinedTable) relation "previsao_producao" does not exist
+LINE 8: FROM previsao_producao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_producao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_producao: (psycopg2.errors.UndefinedTable) relation "producao" does not exist
+LINE 9:     producao
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    producao
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_vendas: (psycopg2.errors.UndefinedTable) relation "vendas_varejo_calcados" does not exist
+LINE 9:     vendas_varejo_calcados
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    vendas_varejo_calcados
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_calcados: (psycopg2.errors.UndefinedTable) relation "emprego_calcados" does not exist
+LINE 6: FROM emprego_calcados
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_calcados: (psycopg2.errors.UndefinedTable) relation "ipca_calcados" does not exist
+LINE 7: FROM ipca_calcados
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes,
+    ipca_12_meses
+FROM ipca_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_couro: (psycopg2.errors.UndefinedTable) relation "emprego_couro" does not exist
+LINE 6: FROM emprego_couro
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_couro
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_geral: (psycopg2.errors.UndefinedTable) relation "ipca_geral" does not exist
+LINE 7: FROM ipca_geral
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes_geral,
+    ipca_12_meses_geral
+FROM ipca_geral
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ind_transformacao: (psycopg2.errors.UndefinedTable) relation "ind_transformacao" does not exist
+LINE 8: FROM ind_transformacao
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    descricao,
+    taxa_mensal,
+    taxa_acumulado
+FROM ind_transformacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_desemprego: (psycopg2.errors.UndefinedTable) relation "tx_desemprego" does not exist
+LINE 12: FROM tx_desemprego
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    trimestre_movel,
+    fora_forca_trabalho,
+    forca_trabalho,
+    forca_trabalho_desocupada,
+    forca_trabalho_ocupada,
+    total,
+    (forca_trabalho_desocupada/forca_trabalho) * 100 AS taxa_desemprego
+FROM tx_desemprego
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ibc_br: (psycopg2.errors.UndefinedTable) relation "ibc" does not exist
+LINE 8: FROM ibc
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    ibc_mensal,
+    ibc_mes_anterior,
+    ibc_acumulado
+FROM ibc
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_cambio: (psycopg2.errors.UndefinedTable) relation "tx_cambio" does not exist
+LINE 10: FROM tx_cambio
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    taxa_cambio,
+    taxa_cambio_mensal,
+    taxa_cambio_acumulado,
+    taxa_cambio_mes_anterior,
+    media_movel_3
+FROM tx_cambio
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_expectativas: (psycopg2.errors.UndefinedTable) relation "expectativas" does not exist
+LINE 9: FROM expectativas
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    expectativa_pib_25,
+    expectativa_pib_26,
+    expectativa_ipca_25,
+    expectativa_ipca_26
+FROM expectativas
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_exportacao: (psycopg2.errors.UndefinedTable) relation "previsao_exportacao" does not exist
+LINE 8: FROM previsao_exportacao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_exportacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_producao: (psycopg2.errors.UndefinedTable) relation "previsao_producao" does not exist
+LINE 8: FROM previsao_producao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_producao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_producao: (psycopg2.errors.UndefinedTable) relation "producao" does not exist
+LINE 9:     producao
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    producao
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_vendas: (psycopg2.errors.UndefinedTable) relation "vendas_varejo_calcados" does not exist
+LINE 9:     vendas_varejo_calcados
+            ^
+
+[SQL: 
+SELECT
+    SPLIT_PART(date, '/', 2)::INT AS ano,
+    SPLIT_PART(date, '/', 1)::INT AS mes,
+    grupo,
+    taxa_mensal,
+    taxa_acumulado
+FROM
+    vendas_varejo_calcados
+WHERE SPLIT_PART(date, '/', 2)::INT IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_calcados: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 10:     comex
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    pares,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'CALCADO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_calcados: (psycopg2.errors.UndefinedTable) relation "emprego_calcados" does not exist
+LINE 6: FROM emprego_calcados
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_calcados: (psycopg2.errors.UndefinedTable) relation "ipca_calcados" does not exist
+LINE 7: FROM ipca_calcados
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes,
+    ipca_12_meses
+FROM ipca_calcados
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'EXP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_couro: (psycopg2.errors.UndefinedTable) relation "comex" does not exist
+LINE 9:     comex
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    valor,
+    tipo,
+    pais
+FROM
+    comex
+WHERE
+    fluxo = 'IMP' AND segmento = 'COURO' AND ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_emprego_couro: (psycopg2.errors.UndefinedTable) relation "emprego_couro" does not exist
+LINE 6: FROM emprego_couro
+             ^
+
+[SQL: 
+SELECT ano,
+       mes,
+       subclasse,
+       saldo_movimentacao
+FROM emprego_couro
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 8:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    vertical
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_pais: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 9:     comex_vertical
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_vertical_sh6: (psycopg2.errors.UndefinedTable) relation "comex_vertical" does not exist
+LINE 10:     comex_vertical
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_vertical
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    vertical,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_exp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'EXP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 8:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano, 
+    mes, 
+    componente
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_pais: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 9:     comex_componente
+            ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    pais,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    pais
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_imp_componente_sh6: (psycopg2.errors.UndefinedTable) relation "comex_componente" does not exist
+LINE 10:     comex_componente
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6,
+    SUM(valor) AS valor
+FROM
+    comex_componente
+WHERE
+    fluxo = 'IMP' AND ano IN %(lista_anos)s
+GROUP BY
+    ano,
+    mes,
+    componente,
+    id_sh6,
+    descricao_sh6
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ipca_geral: (psycopg2.errors.UndefinedTable) relation "ipca_geral" does not exist
+LINE 7: FROM ipca_geral
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    ipca_mes_geral,
+    ipca_12_meses_geral
+FROM ipca_geral
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ind_transformacao: (psycopg2.errors.UndefinedTable) relation "ind_transformacao" does not exist
+LINE 8: FROM ind_transformacao
+             ^
+
+[SQL: 
+SELECT 
+    ano,
+    mes,
+    descricao,
+    taxa_mensal,
+    taxa_acumulado
+FROM ind_transformacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_desemprego: (psycopg2.errors.UndefinedTable) relation "tx_desemprego" does not exist
+LINE 12: FROM tx_desemprego
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    trimestre_movel,
+    fora_forca_trabalho,
+    forca_trabalho,
+    forca_trabalho_desocupada,
+    forca_trabalho_ocupada,
+    total,
+    (forca_trabalho_desocupada/forca_trabalho) * 100 AS taxa_desemprego
+FROM tx_desemprego
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_ibc_br: (psycopg2.errors.UndefinedTable) relation "ibc" does not exist
+LINE 8: FROM ibc
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    ibc_mensal,
+    ibc_mes_anterior,
+    ibc_acumulado
+FROM ibc
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_taxa_cambio: (psycopg2.errors.UndefinedTable) relation "tx_cambio" does not exist
+LINE 10: FROM tx_cambio
+              ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    taxa_cambio,
+    taxa_cambio_mensal,
+    taxa_cambio_acumulado,
+    taxa_cambio_mes_anterior,
+    media_movel_3
+FROM tx_cambio
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_expectativas: (psycopg2.errors.UndefinedTable) relation "expectativas" does not exist
+LINE 9: FROM expectativas
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    expectativa_pib_25,
+    expectativa_pib_26,
+    expectativa_ipca_25,
+    expectativa_ipca_26
+FROM expectativas
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_exportacao: (psycopg2.errors.UndefinedTable) relation "previsao_exportacao" does not exist
+LINE 8: FROM previsao_exportacao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_exportacao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Erro na tabela assintecal_previsao_producao: (psycopg2.errors.UndefinedTable) relation "previsao_producao" does not exist
+LINE 8: FROM previsao_producao
+             ^
+
+[SQL: 
+SELECT
+    ano,
+    mes,
+    variacao_verificada,
+    prev_otimista,
+    prev_pessimista
+FROM previsao_producao
+WHERE ano IN %(lista_anos)s
+]
+[parameters: {'lista_anos': (2021, 2022, 2023, 2024, 2025)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)

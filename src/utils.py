@@ -1015,6 +1015,7 @@ def display_graficos_prod_vendas(
                     y=df_prev.loc[mask_verificada, "variacao_verificada"],
                     name="Taxa de Variação Verificada",
                     marker_color="black",
+                    width=0.8,
                     text=df_prev.loc[mask_verificada, "variacao_verificada"].apply(
                         lambda x: f"{x:,.1f}".replace(".", ",") if pd.notna(x) else ""
                     ),
@@ -1058,6 +1059,24 @@ def display_graficos_prod_vendas(
                     width=0.3,
                 )
             )
+
+            # Garantir que categorias do eixo X sigam a ordem cronológica
+            try:
+                ordered = (
+                    df_prev[["ano", "mes", "mes_ano_label"]]
+                    .drop_duplicates()
+                    .sort_values(["ano", "mes"])
+                )
+                ordered_labels = ordered["mes_ano_label"].tolist()
+                fig.update_xaxes(
+                    categoryorder="array",
+                    categoryarray=ordered_labels,
+                    tickangle=0,
+                    automargin=True,
+                )
+            except Exception:
+                # se falhar, mantém comportamento padrão
+                pass
 
             # Configurar layout
             fig.update_layout(
@@ -1189,6 +1208,7 @@ def display_comex_grafico(
                 y=df_prev.loc[mask_verificada, "variacao_verificada"],
                 name="Taxa de Variação Verificada",
                 marker_color="black",
+                width=0.8,
                 text=df_prev.loc[mask_verificada, "variacao_verificada"].apply(
                     lambda x: f"{x:,.1f}".replace(".", ",") if pd.notna(x) else ""
                 ),
@@ -1232,6 +1252,24 @@ def display_comex_grafico(
                 width=0.3,
             )
         )
+
+        # Garantir que categorias do eixo X sigam a ordem cronológica
+        try:
+            ordered = (
+                df_prev[["ano", "mes", "mes_ano_label"]]
+                .drop_duplicates()
+                .sort_values(["ano", "mes"])
+            )
+            ordered_labels = ordered["mes_ano_label"].tolist()
+            fig.update_xaxes(
+                categoryorder="array",
+                categoryarray=ordered_labels,
+                tickangle=0,
+                automargin=True,
+            )
+        except Exception:
+            # se falhar, mantém comportamento padrão
+            pass
 
         # Configurar layout
         fig.update_layout(
