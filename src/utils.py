@@ -329,11 +329,11 @@ def criar_grafico_barras_linha_comex(
         go.Scatter(
             x=x_labels,  # Usamos a lista formatada
             y=df_plot["yoy"],
-            name="Variação YoY (%)",
+            name="Var. Ano a Ano (%)",
             line=dict(color=cor_linha, width=3),
             marker=dict(color=cor_linha, size=8),
             mode="lines+markers",
-            hovertemplate="<b>Variação YoY</b>: %{y:,.1f}%<extra></extra>",
+            hovertemplate="<b>Var. Ano a Ano</b>: %{y:,.1f}%<extra></extra>",
         ),
         secondary_y=True,
     )
@@ -372,7 +372,7 @@ def criar_grafico_barras_linha_comex(
 
     # Eixo Y Secundário (Linha)
     fig.update_yaxes(
-        title_text="Variação YoY (%)",
+        title_text="Var. Ano a Ano (%)",
         secondary_y=True,
         ticksuffix="%",
         title_font_color=cor_linha,
@@ -428,11 +428,11 @@ def criar_grafico_barras_linha_comex_acum(df_plot, titulo_coluna_y, tipo_coluna)
         go.Scatter(
             x=x_labels,
             y=df_plot["yoy"],
-            name="Variação YoY (%)",
+            name="Var. Ano a Ano (%)",
             line=dict(color=cor_linha, width=3),
             marker=dict(color=cor_linha, size=8),
             mode="lines+markers",
-            hovertemplate="<b>Variação YoY</b>: %{y:,.1f}%<extra></extra>",
+            hovertemplate="<b>Var. Ano a Ano</b>: %{y:,.1f}%<extra></extra>",
         ),
         secondary_y=True,
     )
@@ -472,7 +472,7 @@ def criar_grafico_barras_linha_comex_acum(df_plot, titulo_coluna_y, tipo_coluna)
 
     # Eixo Y Secundário (Linha)
     fig.update_yaxes(
-        title_text="Variação YoY (%)",
+        title_text="Var. Ano a Ano (%)",
         secondary_y=True,
         ticksuffix="%",
         title_font_color=cor_linha,
